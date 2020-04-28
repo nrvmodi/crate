@@ -15,5 +15,7 @@ kubectl get service --namespace crate
 kubectl create -f crate-controller.yaml --namespace crate
 
 For more info 
+
 https://crate.io/a/run-your-first-cratedb-cluster-on-kubernetes-part-one/
+
 https://crate.io/a/run-your-first-cratedb-cluster-on-kubernetes-part-two/
