@@ -3,7 +3,7 @@ apiVersion: "apps/v1"
 metadata:
   # This is the name used as a prefix for all pods in the set.
   name: crate
-  namespace: ray-prod
+  namespace: crate
 spec:
   serviceName: "crate-set"
   # Our cluster has three nodes.
@@ -21,8 +21,8 @@ spec:
       # started, and they must terminate before the primary containers 
       # are initialized. Here, we use one to set the correct memory
       # map limit.
-      imagePullSecrets:
-      -   name: regcred
+      #imagePullSecrets:
+      #-   name: regcred
       initContainers:
       - name: init-sysctl
         image: busybox
