@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ray-ingress
+  namespace: ray-prod
+  annotations:
+#    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # tls:
+  # - hosts:
+  #   - anthonycornell.com
+  #   secretName: tls-secret
+  rules:
+  # - host: anthonycornell.com
+  # - http:
+  #     paths:
+  #       - path: /apple
+  #         backend:
+  #           serviceName: apple-service
+  #           servicePort: 5678
+  #       - path: /
+  #       # UPDATE THIS LINE ABOVE
+  #         backend:
+  #           serviceName: crate-internal-service
+  #           servicePort: 4200
+  - host: ecscrate.ray.life
+    http:
+      paths:
+        - backend:
+            serviceName: crate-internal-service
+            servicePort: 4200
+  - host: crate.web.internal
+    http:
+      paths:
+        - backend:
+            serviceName: crate-internal-service
+            servicePort: 4200
+  - host: crate.postgres.internal
+    http:
+      paths:
+        - backend:
+            serviceName: crate-internal-service
+            servicePort: 5432            
